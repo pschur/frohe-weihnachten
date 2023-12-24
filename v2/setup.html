@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weihnachtskarte Konfigurieren</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body class="container">
+    <h1>Konfiguriere deine Weihnachtskarte</h1>
+    
+    <article id="form">
+        <header><b>Informationen</b></header>
+
+        <div class="grid">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Name" />
+            </div>
+    
+            <div>
+                <label for="from">Von</label>
+                <input type="text" id="from" placeholder="Von" />
+            </div>
+        </div>
+
+        <div>
+            <label for="text">Text <small>(Das Jahr war lang ...)</small></label>
+            <textarea id="text" placeholder="Text"></textarea>
+        </div>
+
+        <footer>
+            <button id="generate">Generieren</button>
+        </footer>
+    </article>
+
+    <article id="result" style="display: none;">
+        <header><b>Fertig!</b></header>
+
+        <p>
+            Hier ist die URL, die du deinen Freunden schicken kannst:
+            <code id="url"></code>
+
+            <!-- <br><br>
+            oder der QR-Code:
+            <div id="qrcode"></div> -->
+        </p>
+
+        <footer>
+            <a id="reset" href="javascript:reset();">Weitere Karte erstellen</a>
+        </footer>
+    </article>
+
+    <script>
+        function reset() {
+            document.getElementById("name").value = "";
+            document.getElementById("text").value = "";
+            document.getElementById("form").style.display = "block";
+            document.getElementById("result").style.display = "none";
+        }
+
+        document.getElementById("generate").addEventListener("click", function() {
+            var name = document.getElementById("name").value;
+            var from = document.getElementById("from").value;
+            var text = document.getElementById("text").value;
+
+            var url = "https://pschur.github.io/frohe-weihnachten/v2/?change=1";
+
+            if (name) {
+                url += "&name=" + encodeURIComponent(name);
+            }
+
+            if (from) {
+                url += "&from=" + encodeURIComponent(from);
+            }
+
+            if (text) {
+                url += "&text=" + encodeURIComponent(text);
+            }
+
+            document.getElementById("url").innerHTML = url;
+            // document.getElementById("qrcode").innerHTML = "";
+
+            document.getElementById("form").style.display = "none";
+            document.getElementById("result").style.display = "block";
+        });
+    </script>
+</body>
+</html>

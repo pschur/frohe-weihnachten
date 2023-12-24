@@ -45,7 +45,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 document.getElementById('from').innerHTML = urlParams.get('from') || 'Paul'
-document.getElementById('text').innerHTML = urlParams.get('text') || '...aber wir haben es geschafft! Ich wünsche dir ein frohes Weihnachtsfest und einen guten Rutsch ins neue Jahr. Ich freue mich dich wieder zu sehen!'
+document.getElementById('text').innerHTML = urlParams.get('text') || '... aber wir haben es geschafft! Ich wünsche dir ein frohes Weihnachtsfest und einen guten Rutsch ins neue Jahr. Ich freue mich dich wieder zu sehen!'
 
 
 // SNOW -------------------------------------------
